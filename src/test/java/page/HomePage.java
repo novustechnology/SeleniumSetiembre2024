@@ -33,7 +33,6 @@ public class HomePage extends BasePage {
         new Select(cbCantidad).selectByValue("5");
     }
 
-
     public void seleccionarCantFinal(String cant){
         wait.until(ExpectedConditions.visibilityOf(cbCantidad));
         new Select(cbCantidad).selectByValue(cant);

@@ -43,7 +43,14 @@ public class FormularioPage extends BasePage {
     @FindBy(id = "department")
     private WebElement cboDepartamento;
 
+    @FindBy(id = "picture")
+    private WebElement btnImagen;
 
+    @FindBy(xpath = "//button[@type='submit']")
+    private WebElement btnEnviar;
+
+    @FindBy(id = "infoModalLabel")
+    private WebElement lblInfoPersonal;
 
 
     public void ingresarUrl() {
@@ -83,11 +90,11 @@ public class FormularioPage extends BasePage {
     }
 
     public void seleccionarDepartamento(String departamento) {
-    new Select(cboDepartamento).selectByValue(departamento);
-    new Select(driver.findElement(By.id("city"))).selectByIndex(1);
+        new Select(cboDepartamento).selectByValue(departamento);
+        new Select(driver.findElement(By.id("city"))).selectByIndex(1);
     }
 
-    public void seleccionarComandoSelenium(){
+    public void seleccionarComandoSelenium() {
         Actions actions = new Actions(driver);
         actions.keyDown(Keys.LEFT_CONTROL)
                 .click(driver.findElement(By.xpath("//option[text()='Browser Commands']")))
@@ -95,8 +102,30 @@ public class FormularioPage extends BasePage {
                 .keyUp(Keys.LEFT_CONTROL)
                 .build()
                 .perform();
-
-
     }
+
+    public void cargarImagen() throws InterruptedException {
+        btnImagen.sendKeys("D:\\Proyectos Intellij\\SeleniumSetiembre2024\\src\\test\\resources\\data\\cucumber.png");
+        Thread.sleep(5000);
+    }
+
+    public void clickEnviar() {
+        btnEnviar.click();
+    }
+
+    public String validarMensajeInfo() {
+        wait.until(ExpectedConditions.visibilityOf(lblInfoPersonal));
+        return lblInfoPersonal.getText();
+    }
+
+    public String validarMensajeError(){
+        wait.until(ExpectedConditions.invisibilityOf(loader));
+        btnEnviar.click();
+        String mensajeError = txtApellido.getAttribute("validationMessage");
+        System.out.println("Error: "+mensajeError);
+        return mensajeError;
+    }
+
+
 
 }

@@ -23,3 +23,7 @@ public class BasePage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 }
+//NOSUCHELEMENTEXCEPTION
+//TIMEOUTEXCEPTION
+//WEBDRIVEREXCEPTION
+//NOSUCHEWINDOWEXCEPTION
