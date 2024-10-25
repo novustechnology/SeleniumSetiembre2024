@@ -1,6 +1,7 @@
 package page;
 
 import base.BasePage;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,9 @@ public class ToastAlertPage extends BasePage {
     @FindBy(className = "toast-body")
     private WebElement modalToast;
 
+    @FindBy(id = "mostrarAlerta")
+    private WebElement btnAlerta;
+
 
     JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -37,5 +41,14 @@ public class ToastAlertPage extends BasePage {
         return modalToast.isDisplayed();
     }
 
+
+    public void aceptarCancelarAlerta(){
+        wait.until(ExpectedConditions.invisibilityOf(loader));
+        wait.until(ExpectedConditions.elementToBeClickable(btnAlerta)).click();
+        wait.until(ExpectedConditions.alertIsPresent()).dismiss();
+        //Alert alerta = driver.switchTo().alert();
+        //alerta.accept();
+
+    }
 
 }

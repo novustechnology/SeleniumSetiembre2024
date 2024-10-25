@@ -23,14 +23,21 @@ Feature: Automatización de Formulario
 
 
     @Toast
-    Scenario: Comprobar Toas de la pagina NovusTechnology
+    Scenario: Comprobar Toast de la pagina NovusTechnology
       Given ingreso a la pagina de NovusTechnology
       When doy click al Toast
       Then valido que se muestre el Toast
 
+     @Alerta
+     Scenario: Comprobar Alerta de la pagina NovusTechnology
+       Given ingreso a la pagina de NovusTechnology
+       #When me posiciono en la parte inferior de la web
+       Then valido que al aceptar se abra una nueva ventana y si hago click en cancelar no haga nada
 
-
-
+    @Csv
+    Scenario: INgreso datos mediante CSV
+      Given ingreso a la pagina de NovusTechnology
+      Then ingresamos la data
 
 
 

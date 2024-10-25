@@ -22,4 +22,9 @@ public class ToastAlertStep {
     public void validoQueSeMuestreElToast() {
         Assert.assertTrue("El toast no se mostró correctamente ", toastAlertPage.validarToast());
     }
+
+    @Then("valido que al aceptar se abra una nueva ventana y si hago click en cancelar no haga nada")
+    public void validoQueAlAceptarSeAbraUnaNuevaVentanaYSiHagoClickEnCancelarNoHagaNada() {
+        toastAlertPage.aceptarCancelarAlerta();
+    }
 }
